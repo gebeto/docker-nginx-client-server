@@ -10,6 +10,8 @@ services:
     build: backend
     ports:
       - 8080:8080
+    volumes:
+      - backend-static:/backend/static
 
   nginx:
     restart: always
@@ -20,7 +22,9 @@ services:
       - "backend:backend"
       - "frontend:frontend"
     volumes:
+      - backend-static:/app/static
       - frontend-dist:/app/static/js
 
 volumes:
   frontend-dist:
+  backend-static:
