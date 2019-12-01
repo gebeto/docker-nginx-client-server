@@ -1,0 +1,22 @@
+FROM node:12.13.1-alpine3.9 as builder
+
+# Create and define the node_modules's cache directory.
+RUN mkdir /frontend-cache
+WORKDIR /frontend-cache
+
+# Install the application's dependencies into the node_modules's cache directory.
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn
+
+# Create and define the application's working directory.
+RUN mkdir /frontend
+WORKDIR /frontend
+
+# COPY ./package.json /frontend/package.json
+# COPY ./yarn.lock /frontend/yarn.lock
+
+# WORKDIR /frontend
+COPY . .
+# CMD yarn watch
+CMD /frontend/entrypoint-development.sh

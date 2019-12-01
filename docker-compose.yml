@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  frontend:
+    build: frontend
+    volumes:
+      - frontend-dist:/frontend/dist:ro
+
+  backend:
+    build: backend
+    ports:
+      - 8080:8080
+
+  nginx:
+    restart: always
+    build: nginx
+    ports:
+      - "80:80"
+    links:
+      - "backend:backend"
+      - "frontend:frontend"
+    volumes:
+      - frontend-dist:/app/static/js
+
+volumes:
+  frontend-dist:

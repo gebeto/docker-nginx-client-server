@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  webpack:
+    build: frontend
+    volumes:
+      - ./frontend:/frontend:rw
