@@ -1,7 +1,33 @@
 version: '3'
 
 services:
-  webpack:
-    build: frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-dev
     volumes:
       - ./frontend:/frontend:rw
+      - frontend-dist:/frontend/dist
+
+  backend:
+    build: backend
+    volumes:
+      - backend-static:/backend/static
+    command: nodemon index.js
+
+  nginx:
+    restart: always
+    build: nginx
+    ports:
+      - "80:80"
+    links:
+      - "backend:backend"
+      - "frontend:frontend"
+    volumes:
+      - backend-static:/app/static
+      - frontend-dist:/app/static/js:ro
+
+
+volumes:
+  frontend-dist:
+  backend-static:

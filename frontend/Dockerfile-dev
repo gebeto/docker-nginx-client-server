@@ -12,11 +12,6 @@ RUN yarn
 # Create and define the application's working directory.
 RUN mkdir /frontend
 WORKDIR /frontend
-
-# COPY ./package.json /frontend/package.json
-# COPY ./yarn.lock /frontend/yarn.lock
-
-# WORKDIR /frontend
 COPY . .
-# CMD yarn watch
+
 CMD /frontend/entrypoint-development.sh

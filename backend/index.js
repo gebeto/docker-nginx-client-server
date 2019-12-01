@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 	<body>
 		<link rel="stylesheet" href="/static/styles.css" />
 		
-		<h1>Hello world</h1>
+		<h1>Hello world new</h1>
 
 		<div id="root">Loading...</div>
 

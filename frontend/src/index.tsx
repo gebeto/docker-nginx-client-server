@@ -22,11 +22,18 @@ vitalyk.log();
 const vital = new Man("Vitoldios");
 vital.log();
 
+const people = [slavik, vitalyk, vital];
+
 
 ReactDOM.render(
 	(
 		<div>
-			Hello world
+			Hello world 3
+			<ul>
+				{people.map(man =>
+					<li key={man.name}>{man.name}</li>
+				)}
+			</ul>
 		</div>
 	),
 	document.getElementById("root")
