@@ -11,5 +11,5 @@ RUN yarn build
 FROM alpine:3.9
 WORKDIR /frontend
 COPY --from=builder /frontend/dist /frontend/dist
-CMD echo "Container is started!" && tail -f /dev/null
+# CMD echo "Container is started!" && tail -f /dev/null
 # CMD ls dist

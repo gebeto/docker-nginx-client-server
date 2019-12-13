@@ -28,7 +28,7 @@ const people = [slavik, vitalyk, vital];
 ReactDOM.render(
 	(
 		<div>
-			Hello world 3
+			Hello world 4
 			<ul>
 				{people.map(man =>
 					<li key={man.name}>{man.name}</li>
